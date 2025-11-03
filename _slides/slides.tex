@@ -2,15 +2,17 @@
 \usepackage{slides,math}
 
 % Optionally define `accent`/`accent2` colors for theme customization
-% I recommend changing the top slider on this: https://hslpicker.com/#1e9400
-%\definecolor{accent}{rgb}{940034}
-%\definecolor{accent2}{HTML}{006896}
 \definecolor{accent}{RGB}{128, 0, 0} % Maroon
 \definecolor{accent2}{RGB}{194, 102, 127} % Light maroon
 
-\title{Why can't we print more money?}
+% For quoteations
+\usepackage{csquotes}
+
+% Title stuff
+\title{My beamer template}
+\subtitle{An oven-ready template}
 \date{\today}
-\author{Rob Włodarski \and Author 2}
+\author{Rob Włodarski \\ University of Cambridge}
 \addbibresource{references.bib}
 
 \begin{document}
@@ -19,18 +21,29 @@
 \begin{frame}[noframenumbering,plain]
 \maketitle
 
-% \bottomleft{\footnotesize $^*$A bit of extra info here. Add an asterich to title or author}
+%\bottomleft{\footnotesize $^*$A bit of extra info here. Add an asterich to title or author}
 \end{frame}
 % ------------------------------------------------------------------------------
 
-\begin{frame}{Initial slide}
-  Keep one citation to avoid errors.
-  \newline
-  \citecolor{
-    \citet{Fajgelbaum_Morales_Serrato_Zidar_2018}
-  }
-\end{frame}
+\begin{frame}{Frame title}{Frame subtitle}
+The standard enumeration and itemization approaches:
+\begin{enumerate}
+  \item \texttt{enumerate}
+\end{enumerate}
+\begin{itemize}
+  \item \texttt{itemize}
+\end{itemize}
+My own approaches, only to be used in the \enquote{sub} environment:
+\begin{itemize_arrow}
+  \item \texttt{itemize$\_$arrow}
+\end{itemize_arrow}
 
+   \bottomleft{
+     \hyperlink{appendix1}{\beamergotobutton{Appendix}}
+     \beamergotobutton{Button 2} 
+   }
+
+\end{frame}
 
 
 
@@ -43,8 +56,6 @@
 \end{frame}
 \appendix
 % ------------------------------------------------------------------------------
-
-% 
 
 \end{document}
 

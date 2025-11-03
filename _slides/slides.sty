@@ -25,15 +25,10 @@
 
 % Serif option:
 % Libertine for serif text font
- \usepackage{libertine}
+ \usepackage{cochineal}
 %  Source Code Pro for monospace font
  \usepackage[scale=0.88]{plex-mono}
  \renewcommand{\ttdefault}{\plexmonofamily}
-
-% Sans-serif option:
-%\usepackage[sfdefault]{roboto}
-%\usepackage[scale=0.95]{plex-mono}
-%\renewcommand{\ttdefault}{\plexmonofamily}
 
 % Small adjustments to text kerning
 \usepackage{microtype}
@@ -46,7 +41,7 @@
 \setbeamersize{text margin left = 10pt, text margin right = 10pt}  
 
 % \alert
-\setbeamercolor{alerted text}{fg = accent2}
+\setbeamercolor{alerted text}{fg = accent}
 
 % Frame title
 \setbeamercolor{frametitle}{bg = white, fg = zinc900}
@@ -57,7 +52,6 @@
 
 
 % Page numbering
-% Slightly modified for nicer page numbering
 \setbeamercolor{page number in head/foot}{fg=zinc600}
 \setbeamerfont{footline}{size=\scriptsize, family=\ttfamily}
 \defbeamertemplate{footline}{frame number spacing}{
@@ -84,7 +78,7 @@
 % Let's you put \beamerbutton in bottom right corner
 \usepackage[absolute,overlay]{textpos}
 \newcommand\bottomleft[1]{%
-  \begin{textblock*}{\paperwidth}(0pt,{\dimexpr\textheight + 5pt})
+  \begin{textblock*}{\paperwidth}(0pt,{\dimexpr\textheight + 2.5pt})
     \hspace{8pt}\raggedright #1
   \end{textblock*}
 }
@@ -186,15 +180,25 @@
 \setbeamerfont{itemize item}{size = \small}
 \setbeamertemplate{itemize item}[square]
 
-%% right arrow for subitems
+%% square for subitems
 \setbeamercolor{itemize subitem}{fg = zinc600}
 \setbeamerfont{itemize subitem}{size = \small}
-\setbeamertemplate{itemize subitem}{$\rightarrow$}
+\setbeamertemplate{itemize subitem}[square]
 
 %% square for subsubitems
 \setbeamercolor{itemize subsubitem}{fg = zinc600}
 \setbeamerfont{itemize subsubitem}{size = \small}
 \setbeamertemplate{itemize subsubitem}[square]
+
+% arrow items 
+\newenvironment{itemize_arrow}{%
+  \begin{itemize}
+  \setbeamertemplate{itemize item}{\textcolor{zinc600}{$\rightarrow$}}
+  \setbeamertemplate{itemize subitem}{\textcolor{zinc600}{$\rightarrow$}}
+  \setbeamertemplate{itemize subsubitem}{\textcolor{zinc600}{$\rightarrow$}}
+}{%
+  \end{itemize}
+}
 
 % References -------------------------------------------------------------------
 

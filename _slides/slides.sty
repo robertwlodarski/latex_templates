@@ -1,4 +1,31 @@
-% Latex Programming tools ------------------------------------------------------
+% ==============================================================================
+% Table of contents
+% ==============================================================================
+% 1. Latex programming tools
+% 2. Color initialization
+% 3. Fonts and typography
+% 4. Beamer options and layout
+% 5. Title page customization
+% 6. Table of contents settings
+% 7. Lists and bullet points
+% 8. Bibliography and references
+% 9. Math fixes
+% 10. Hyperlinks
+% 11. Color palettes and text highlighting
+% 12. Math packages and tikz setup
+% 13. Blocks and boxes
+% 14. Code listings
+% 15. Layout helpers
+% 16. Tables and tabular environments
+% 17. Figures and images
+% 18. Transition slides
+% 19. Custom coordinate systems
+% ==============================================================================
+
+
+% ------------------------------------------------------------------------------
+% 1. Latex programming tools
+% ------------------------------------------------------------------------------
 % \AtBeginEnvironment
 % https://tex.stackexchange.com/questions/33576/conditional-typesetting-build
 \usepackage{etoolbox}
@@ -8,15 +35,20 @@
 \vfuzz=2pt 
 \hfuzz=2pt
 
-% Define colors ----------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% 2. Color initialization
+% ------------------------------------------------------------------------------
 \usepackage{xcolor}
 
 % Define `accent`/`accent2` colors for theme customization
-% If accent/accent2 are not defined, then use defaults
-\providecolor{accent}{HTML}{006896}
-\providecolor{accent2}{HTML}{E64173}
+% User preference: Maroon accents
+\definecolor{accent}{RGB}{128, 0, 0}      % Maroon
+\definecolor{accent2}{RGB}{194, 102, 127} % Light maroon
 
-% Fonts ------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% 3. Fonts and typography
+% ------------------------------------------------------------------------------
 % Beamer Option to use custom fonts
 \usefonttheme{professionalfonts}
 % T1 removes errors for things like \textbackslash
@@ -24,8 +56,9 @@
 \usepackage{inputenc}
 
 % Serif option:
-% Libertine for serif text font
- \usepackage{cochineal}
+% libertine for serif text font
+% cochineal for classier setif text font 
+ \usepackage{libertine}
 %  Source Code Pro for monospace font
  \usepackage[scale=0.88]{plex-mono}
  \renewcommand{\ttdefault}{\plexmonofamily}
@@ -33,7 +66,10 @@
 % Small adjustments to text kerning
 \usepackage{microtype}
 
-% Beamer Options ---------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% 4. Beamer options and layout
+% ------------------------------------------------------------------------------
 % Background
 \setbeamercolor{background canvas}{bg = white}
 
@@ -49,7 +85,6 @@
 \setbeamercolor{framesubtitle}{bg = white, fg = accent}
 \setbeamerfont{framesubtitle}{size = \small, series = \bfseries}
 %\setbeamerfont{framesubtitle}{size = \small, shape = \itshape}
-
 
 % Page numbering
 \setbeamercolor{page number in head/foot}{fg=zinc600}
@@ -107,7 +142,9 @@
 \AtBeginDocument{\setlength\belowdisplayshortskip{\bigskipamount}}
 
 
-% Title page -------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% 5. Title page customization
+% ------------------------------------------------------------------------------
 \setbeamercolor{title}{fg = zinc900}
 \setbeamercolor{subtitle}{fg = accent}
 
@@ -130,7 +167,10 @@
   %\end{centering}
 }
 
-% Table of Contents with Sections ----------------------------------------------
+
+% ------------------------------------------------------------------------------
+% 6. Table of contents settings
+% ------------------------------------------------------------------------------
 \setbeamerfont{section in toc}{size = \large, series = \bfseries}
 \setbeamerfont{section in toc shaded}{size = \large}
 \setbeamercolor{section in toc}{fg = zinc800}
@@ -144,8 +184,10 @@
   }
 }
 
-% Bullet points ----------------------------------------------------------------
 
+% ------------------------------------------------------------------------------
+% 7. Lists and bullet points
+% ------------------------------------------------------------------------------
 %% Fix left-margins
 \settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
 \addtolength{\leftmargini}{\labelsep}
@@ -165,7 +207,8 @@
   }
   %\kern 0.25em
 }
-
+\setbeamercolor{enumerate subitem}{fg=zinc300}
+\setbeamertemplate{enumerate subitem}{(\roman{enumii})}
 
 %\setbeamercolor{enumerate item}{fg = zinc600}
 %\setbeamerfont{enumerate item}{size = \small}
@@ -187,8 +230,8 @@
 
 %% square for subsubitems
 \setbeamercolor{itemize subsubitem}{fg = zinc600}
-\setbeamerfont{itemize subsubitem}{size = \small}
-\setbeamertemplate{itemize subsubitem}[square]
+\setbeamerfont{itemize subsubitem}{size = \footnotesize}
+\setbeamertemplate{itemize subsubitem}[triangle]
 
 % arrow items 
 \newenvironment{itemize_arrow}{%
@@ -200,8 +243,10 @@
   \end{itemize}
 }
 
-% References -------------------------------------------------------------------
 
+% ------------------------------------------------------------------------------
+% 8. Bibliography and references
+% ------------------------------------------------------------------------------
 % biblatex 
 \usepackage[
   natbib = true, 
@@ -239,7 +284,11 @@
 \setbeamerfont{bibliography entry note}{size = \footnotesize, series = \mdseries}
 \setbeamercolor{bibliography entry note}{fg = zinc900}
 
-% Pause in align fix -----------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% 9. Math fixes
+% ------------------------------------------------------------------------------
+% Pause in align fix 
 % https://tex.stackexchange.com/a/75550/334034
 \makeatletter
 \let\save@measuring@true\measuring@true
@@ -252,18 +301,25 @@
 }
 \makeatother
 
-% Hyperref ---------------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% 10. Hyperlinks
+% ------------------------------------------------------------------------------
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,
-  linkcolor = accent2,
+  linkcolor = accent,
   filecolor = accent2,
   urlcolor = accent2,
   citecolor = accent2,
 }
 
-% Kyle's colors ----------------------------------------------------------------
-% Zinc from Tailwind Colors
+
+% ------------------------------------------------------------------------------
+% 11. Color palettes and text highlighting
+% ------------------------------------------------------------------------------
+
+% 1. Zinc (Grays) from Tailwind Colors
 \definecolor{zinc50}{HTML}{fafafa}
 \definecolor{zinc100}{HTML}{f4f4f5}
 \definecolor{zinc200}{HTML}{e4e4e7}
@@ -276,7 +332,41 @@
 \definecolor{zinc900}{HTML}{18181b}
 \definecolor{zinc950}{HTML}{09090b}
 
-\definecolor{navy}{HTML}{002C55}
+% 2. Primary Theme Colors (Maroon)
+% Defining 'maroon' explicitly so it can be called by name
+\definecolor{maroon}{RGB}{128, 0, 0}       % Deep Maroon
+\definecolor{maroonLight}{RGB}{194, 102, 127} % Light Maroon
+
+% Map standard theme accents to Maroon
+\colorlet{accent}{maroon}
+\colorlet{accent2}{maroonLight}
+
+% 3. Supplementary Palette (Toronto Style)
+% Deep Navy: Used for text headers to contrast with Maroon
+\definecolor{presNavy}{HTML}{002F5F} 
+% Gold: Used for ideas/implementation (complementary to Maroon)
+\definecolor{presGold}{HTML}{B8860B}
+
+% 4. Background Colors (Pastels for text boxes)
+\definecolor{bgMaroon}{RGB}{242, 230, 230} % Very pale maroon
+\definecolor{bgNavy}{HTML}{D1E5F0}         % Pale navy
+\definecolor{bgGold}{HTML}{FDF2D0}         % Pale gold
+
+% 5. Modern Highlighting Tools (Bold + Color)
+% Usage: \maroon{Important Text}, \navy{Header Text}
+\newcommand\maroon[1]{{\color{maroon}\textbf{#1}}}
+\newcommand\lightMaroon[1]{{\color{maroonLight}\textbf{#1}}}
+\newcommand\navy[1]{{\color{presNavy}\textbf{#1}}}
+\newcommand\gold[1]{{\color{presGold}\textbf{#1}}}
+
+% Usage: \bgMaroon{Text inside box}
+\newcommand\bgMaroon[1]{\colorbox{bgMaroon}{#1}}
+\newcommand\bgNavy[1]{\colorbox{bgNavy}{#1}}
+\newcommand\bgGold[1]{\colorbox{bgGold}{#1}}
+
+% 6. Legacy / Dependency Colors (Kept for compatibility)
+% Definitions
+\definecolor{oldNavy}{HTML}{002C55}
 \definecolor{raspberry}{HTML}{940034}
 \definecolor{cranberry}{HTML}{B3114B}
 \definecolor{orange}{HTML}{D65616}
@@ -286,19 +376,7 @@
 \definecolor{rose}{HTML}{FB7185}
 \definecolor{yellow}{HTML}{ffc517}
 
-% Easily color text
-\newcommand\navy[1]{{\color{navy}#1}}
-\newcommand\raspberry[1]{{\color{raspberry}#1}}
-\newcommand\cranberry[1]{{\color{cranberry}#1}}
-\newcommand\orange[1]{{\color{orange}#1}}
-\newcommand\purple[1]{{\color{purple}#1}}
-\newcommand\blue[1]{{\color{blue}#1}}
-\newcommand\green[1]{{\color{green}#1}}
-\newcommand\rose[1]{{\color{rose}#1}}
-\newcommand\yellow[1]{{\color{yellow}#1}}
-
-% lightened via: https://uicolors.app/create
-\definecolor{bgNavy}{HTML}{b2e3ff}
+% Backgrounds
 \definecolor{bgRaspberry}{HTML}{ff96a9}
 \definecolor{bgCranberry}{HTML}{fda4d0}
 \definecolor{bgOrange}{HTML}{f6b97b}
@@ -308,8 +386,17 @@
 \definecolor{bgRose}{HTML}{fecdd4}
 \definecolor{bgYellow}{HTML}{ffea88}
 
-% Color background of text
-\newcommand\bgNavy[1]{\colorbox{bgNavy}{#1}}
+% Commands
+\newcommand\oldNavy[1]{{\color{oldNavy}#1}}
+\newcommand\raspberry[1]{{\color{raspberry}#1}}
+\newcommand\cranberry[1]{{\color{cranberry}#1}}
+\newcommand\orange[1]{{\color{orange}#1}}
+\newcommand\purple[1]{{\color{purple}#1}}
+\newcommand\blue[1]{{\color{blue}#1}}
+\newcommand\green[1]{{\color{green}#1}}
+\newcommand\rose[1]{{\color{rose}#1}}
+\newcommand\yellow[1]{{\color{yellow}#1}}
+
 \newcommand\bgRaspberry[1]{\colorbox{bgRaspberry}{#1}}
 \newcommand\bgCranberry[1]{\colorbox{bgCranberry}{#1}}
 \newcommand\bgOrange[1]{\colorbox{bgOrange}{#1}}
@@ -319,32 +406,17 @@
 \newcommand\bgRose[1]{\colorbox{bgRose}{#1}}
 \newcommand\bgYellow[1]{\colorbox{bgYellow}{#1}}
 
-% old colors: have fallen out of grace
-% \definecolor{ruby}{HTML}{9a2515}
-% \definecolor{alice}{HTML}{107895}
-% \definecolor{daisy}{HTML}{EBC944}
-% \definecolor{coral}{HTML}{F26D21}
-% \definecolor{kelly}{HTML}{829356}
-% \newcommand\kelly[1]{{\color{kelly}#1}}
-% \newcommand\ruby[1]{{\color{ruby}#1}}
-% \newcommand\alice[1]{{\color{alice}#1}}
-% \newcommand\daisy[1]{{\color{daisy}#1}}
-% \newcommand\coral[1]{{\color{coral}#1}}
-% \newcommand\bgKelly[1]{{\colorbox{kelly!80!white}{#1}}}
-% \newcommand\bgRuby[1]{{\colorbox{ruby!80!white}{#1}}}
-% \newcommand\bgAlice[1]{{\colorbox{alice!80!white}{#1}}}
-% \newcommand\bgDaisy[1]{{\colorbox{daisy!80!white}{#1}}}
-% \newcommand\bgCoral[1]{{\colorbox{coral!80!white}{#1}}}
 
-
-% Math stuff -------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% 12. Math packages and tikz setup
+% ------------------------------------------------------------------------------
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{bm}
 
-% Load tcolorbox and tikz ------------------------------------------------------
+% Load tcolorbox and tikz 
 \usepackage[beamer,customcolors]{hf-tikz}
 \usetikzlibrary{calc, fit, shapes.misc, shadows, arrows.meta}
 \usepackage[most,skins]{tcolorbox}
@@ -357,13 +429,18 @@
   }
 }
 
-% Block ------------------------------------------------------------------------
-% TODO: Update default blocks
+
+% ------------------------------------------------------------------------------
+% 13. Blocks and boxes
+% ------------------------------------------------------------------------------
+
+% 1. Default Block Style (Mapped to Zinc)
+% This applies when you just use \begin{block}{Title} ... \end{block}
 \defbeamertemplate{block begin}{framed}[1][] {
   \begin{tcolorbox}[colback=zinc50, colframe=zinc200, arc=0mm]
   {
-    \vskip\smallskipamount%
-    \ifthenelse{\equal{\insertblocktitle}{}}{}{%
+    %\vskip\smallskipamount%
+    \ifthenelse{\equal{\insertblocktitle}{-}}{}{%
       \raggedright\usebeamerfont*{block title}\usebeamercolor[fg]{title}%
       \textbf{\insertblocktitle}%
       \vskip\medskipamount%
@@ -377,6 +454,7 @@
 }
 \setbeamertemplate{blocks}[framed]
 
+% 2. Zinc Block (Explicit)
 \newenvironment*{zincBlock}[1]{%
   \begin{tcolorbox}[colback=zinc50, colframe=zinc200, arc=0mm]{
     \vskip\smallskipamount%
@@ -392,16 +470,14 @@
   \vskip\smallskipamount\end{tcolorbox}
 }
 
-% Colors from plugging base color into https://uicolors.app/create
-\definecolor{purple50}{HTML}{f9f8fc}
-\definecolor{purple100}{HTML}{f1eff8}
-\definecolor{purple200}{HTML}{e6e2f2}
-\newenvironment*{purpleBlock}[1]{%
-  \begin{tcolorbox}[colback=purple50, colframe=purple200, arc=0mm]{
+% 3. Maroon Block
+% Uses bgMaroon for background and accent2 (Light Maroon) for border
+\newenvironment*{maroonBlock}[1]{%
+  \begin{tcolorbox}[colback=bgMaroon, colframe=accent2, arc=0mm]{
     \vskip\smallskipamount%
     \ifthenelse{\equal{#1}{}}{}{%
       \raggedright\usebeamerfont*{block title}\usebeamercolor[fg]{title}%
-      \textbf{#1}%
+      \maroon{#1}%
       \vskip\medskipamount%
     }%
   }%
@@ -411,24 +487,43 @@
   \vskip\smallskipamount\end{tcolorbox}
 }
 
-\definecolor{cranberry50}{HTML}{fdf2f6}
-\definecolor{cranberry100}{HTML}{fbe8ef}
-\definecolor{cranberry200}{HTML}{fad0e0}
-\newenvironment*{cranberryBlock}[1]{%
-  \begin{tcolorbox}[colback=cranberry50, colframe=cranberry200, arc=0mm]{
-    \vskip\smallskipamount%
-    \raggedright\usebeamerfont*{block title}\usebeamercolor[fg]{title}%
-    \textbf{#1}%
+% 4. Navy Block
+% Uses bgNavy for background and a 40% opacity Navy for border
+\newenvironment*{navyBlock}[1]{%
+  \begin{tcolorbox}[colback=bgNavy, colframe=presNavy!40!white, arc=0mm]{
+    %\vskip\smallskipamount%
+    \ifthenelse{\equal{#1}{}}{}{%
+      \raggedright\usebeamerfont*{block title}\usebeamercolor[fg]{title}%
+      \navy{#1}%
+      \vskip\medskipamount%
+    }%
   }%
-  \vskip\medskipamount%
   \raggedright%
   \usebeamerfont{block body}%
 }{%
   \vskip\smallskipamount\end{tcolorbox}
 }
 
+% 5. Gold Block
+% Uses bgGold for background and a 50% opacity Gold for border
+\newenvironment*{goldBlock}[1]{%
+  \begin{tcolorbox}[colback=bgGold, colframe=presGold!50!white, arc=0mm]{
+    \vskip\smallskipamount%
+    \ifthenelse{\equal{#1}{}}{}{%
+      \raggedright\usebeamerfont*{block title}\usebeamercolor[fg]{title}%
+      \gold{#1}%
+      \vskip\medskipamount%
+    }%
+  }%
+  \raggedright%
+  \usebeamerfont{block body}%
+}{%
+  \vskip\smallskipamount\end{tcolorbox}
+}
 
-% Code listings ----------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% 14. Code listings
+% ------------------------------------------------------------------------------
 \usepackage{listings}
 \tcbuselibrary{listings,listingsutf8,skins}
 \tcbset{
@@ -457,10 +552,16 @@
 }
 
 
-% \begin{columns} --------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% 15. Layout helpers
+% ------------------------------------------------------------------------------
+% \begin{columns} 
 \usepackage{multicol}
 
-% Tables -----------------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% 16. Tables and tabular environments
+% ------------------------------------------------------------------------------
 % Fix \input with tables
 % \input fails when \\ is at end of external .tex file
 \makeatletter
@@ -506,7 +607,7 @@
   {\footnotesize\textsc{#1} #2 \\[\medskipamount]}
 }
 
-% Table Highlighting -----------------------------------------------------------
+% Table Highlighting 
 
 % Create top-left and bottom-right markets in tabular cells with a unique matching id and these commands will outline those cells
 \usepackage[beamer,customcolors]{hf-tikz}
@@ -550,8 +651,9 @@
 \newcolumntype{d}[0]{D{.}{.}{-1}}
 
 
-% Figures ----------------------------------------------------------------------
-
+% ------------------------------------------------------------------------------
+% 17. Figures and images
+% ------------------------------------------------------------------------------
 % \imageframe{img_name}
 % from https://github.com/mattzinc900well/cousteau
 \newcommand{\imageframe}[1]{%
@@ -567,7 +669,10 @@
 % subfigures
 \usepackage{subfigure}
 
-% Highlight slide --------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% 18. Transition slides
+% ------------------------------------------------------------------------------
 % \begin{transitionframe} Text \end{transitionframe}
 % from paulgp's beamer tips
 \newenvironment{transitionframe}{
@@ -577,7 +682,11 @@
     \end{frame}
 }
 
-% Define custom slide coordinate system ----------------------------------------
+
+% ------------------------------------------------------------------------------
+% 19. Custom coordinate systems
+% ------------------------------------------------------------------------------
+% Define custom slide coordinate system 
 % https://tex.stackexchange.com/questions/89588/positioning-relative-to-page-in-tikz
 % Defining a new coordinate system for the page:
 %
@@ -616,7 +725,7 @@
 % To overlay on beamer slides, use the following:
 % 
 % \begin{tikzpicture}[remember picture, overlay]
-%   \node[anchor = north west] (anchor_name) at (page cs:0.0, 0.0) {   
+%   \node[anchor = north west] (anchor_name) at (page cs:0.0, 0.0) {    
 %     CONTENT HERE  
 %   };
 % \end{tikzpicture}
@@ -649,6 +758,3 @@
     \draw (page cs: 0.0, 0.9) edge[black!20!white, line width = 0.3mm, dotted] (page cs: 1.0, 0.9);
   \end{tikzpicture}  
 }
-
-
-

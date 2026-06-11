@@ -43,8 +43,8 @@
 
 % Define `accent`/`accent2` colors for theme customization
 % User preference: Maroon accents
-\definecolor{accent}{RGB}{128, 0, 0}      % Maroon
-\definecolor{accent2}{RGB}{194, 102, 127} % Light maroon
+\definecolor{accent}{RGB}{0, 4, 53}      % Navy
+\definecolor{accent2}{RGB}{78, 118, 161} % Light navy
 
 % ------------------------------------------------------------------------------
 % 3. Fonts and typography
@@ -58,10 +58,14 @@
 % Serif option:
 % libertine for serif text font
 % cochineal for classier setif text font 
- \usepackage{libertine}
-%  Source Code Pro for monospace font
- \usepackage[scale=0.88]{plex-mono}
- \renewcommand{\ttdefault}{\plexmonofamily}
+%  \usepackage{libertine}
+% %  Source Code Pro for monospace font
+%  \usepackage[scale=0.88]{plex-mono}
+%  \renewcommand{\ttdefault}{\plexmonofamily}
+\usepackage{tgheros}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[scale=0.88]{plex-mono}
+
 
 % Small adjustments to text kerning
 \usepackage{microtype}
@@ -338,14 +342,17 @@
 \definecolor{maroonLight}{RGB}{194, 102, 127} % Light Maroon
 
 % Map standard theme accents to Maroon
-\colorlet{accent}{maroon}
-\colorlet{accent2}{maroonLight}
+\definecolor{oldNavy}{HTML}{002C55}
+% \colorlet{accent}{oldNavy}
+% \colorlet{accent2}{oldNavy!75}
 
 % 3. Supplementary Palette (Toronto Style)
 % Deep Navy: Used for text headers to contrast with Maroon
 \definecolor{presNavy}{HTML}{002F5F} 
-% Gold: Used for ideas/implementation (complementary to Maroon)
 \definecolor{presGold}{HTML}{B8860B}
+\definecolor{presTeal}{HTML}{008080}
+\definecolor{presRaspberry}{HTML}{940034}
+\definecolor{presGreen}{HTML}{98CC70}
 
 % 4. Background Colors (Pastels for text boxes)
 \definecolor{bgMaroon}{RGB}{242, 230, 230} % Very pale maroon
